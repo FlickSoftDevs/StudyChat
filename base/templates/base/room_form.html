@@ -22,7 +22,7 @@
           {% csrf_token %}
 
           <div class="form__group">
-            <label for="room_topic">Enter a Topic</label>
+            <label for="room_topic">Write the question that needs to be discussed.</label>
             <input required type="text" value="{{room.topic.name}}" name="topic" list="topic-list" />
             <datalist id="topic-list">
               <select id="room_topic">
@@ -35,12 +35,12 @@
 
 
           <div class="form__group">
-            <label for="room_name">Room Name</label>
+            <label for="room_name">That question belongs to which topic/subject</label>
             {{form.name}}
           </div>
 
           <div class="form__group">
-            <label for="room_description">Room Description</label>
+            <label for="room_description">Write Short Description About Question</label>
             {{form.description}}
           </div>
 

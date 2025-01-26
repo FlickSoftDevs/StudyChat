@@ -74,23 +74,45 @@ def home(request):
                'room_count': room_count, 'room_messages': room_messages}
     return render(request, 'base/home.html', context)
 
+# @login_required(login_url='login')
+# def room(request, pk):
+#     room = Room.objects.get(id=pk)
+#     room_messages = room.message_set.all()
+#     participants = room.participants.all()
 
+#     if request.method == 'POST':
+#         message = Message.objects.create(
+#             user=request.user,
+#             room=room,
+#             body=request.POST.get('body')
+#         )
+#         room.participants.add(request.user)
+#         return redirect('room', pk=room.id)
+
+#     context = {'room': room, 'room_messages': room_messages,
+#                'participants': participants}
+#     return render(request, 'base/room.html', context)
+
+
+# @login_required(login_url='login')  # Ensure only logged-in users can access this view
 def room(request, pk):
     room = Room.objects.get(id=pk)
     room_messages = room.message_set.all()
     participants = room.participants.all()
 
     if request.method == 'POST':
-        message = Message.objects.create(
-            user=request.user,
-            room=room,
-            body=request.POST.get('body')
-        )
-        room.participants.add(request.user)
-        return redirect('room', pk=room.id)
+        if request.user.is_authenticated:
+            message = Message.objects.create(
+                user=request.user,
+                room=room,
+                body=request.POST.get('body')
+            )
+            room.participants.add(request.user)
+            return redirect('room', pk=room.id)
+        else:
+            messages.error(request, "You must be logged in to post a message.")
 
-    context = {'room': room, 'room_messages': room_messages,
-               'participants': participants}
+    context = {'room': room, 'room_messages': room_messages, 'participants': participants}
     return render(request, 'base/room.html', context)
 
 

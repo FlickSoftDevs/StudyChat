@@ -2,7 +2,8 @@
 <header class="header header--loggedIn">
     <div class="container">
         <a href="{% url 'home' %}" class="header__logo">
-            <img src="{% static 'images/logo.svg' %}" />
+            <img src="{% static 'images/logo.webp' %}" />
+            
             <h1>Discussion Forum</h1>
         </a>
         <form class="header__search" method="GET" action="{% url 'home' %}">
@@ -15,34 +16,42 @@
                 </svg>
                 <input name="q" placeholder="Search for posts" />
             </label>
+    
         </form>
         <nav class="header__menu">
 
 
             <!-- Logged In -->
-            {% if request.user.is_authenticated %}
-            <div class="header__user">
-                <a href="{% url 'update-user' %}">
-                    <div class="avatar avatar--medium active">
-                        <img src="{{request.user.avatar.url}}" />
-                    </div>
-                    <p>{{request.user.username}} <span>@{{request.user.username}}</span></p>
-                </a>
-                <button class="dropdown-button">
-                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-                        <title>chevron-down</title>
-                        <path d="M16 21l-13-13h-3l16 16 16-16h-3l-13 13z"></path>
-                    </svg>
-                </button>
-            </div>
+        
+{% if request.user.is_authenticated %}
+<div class="header__user">
+    <a href="{% url 'update-user' %}">
+        <div class="avatar avatar--medium active">
+            {% if not request.user.avatar and request.user.avatar.url %}
+            <img src="{% static 'images/avatar.svg' %}" alt="Default Avatar">
             {% else %}
 
-            <!-- Not Logged In -->
-            <a href="{% url 'login' %}">
-                <img src="{% static 'images/avatar.svg' %}" />
-                <p>Login</p>
-            </a>
+                <img src="{{ request.user.avatar.url }}" alt="User Avatar">
             {% endif %}
+        </div>
+        <p>{{ request.user.username }} <span>@{{ request.user.username }}</span></p>
+    </a>
+    <button class="dropdown-button">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+            <title>chevron-down</title>
+            <path d="M16 21l-13-13h-3l16 16 16-16h-3l-13 13z"></path>
+        </svg>
+    </button>
+</div>
+{% else %}
+
+<!-- Not Logged In -->
+<a href="{% url 'login' %}" class="header__user">
+    <img src="{% static 'images/avatar.svg' %}" alt="Default Avatar">
+    <p>Login</p>
+</a>
+{% endif %}
+
 
             <div class="dropdown-menu">
                 <a href="{% url 'update-user' %}" class="dropdown-link"><svg version="1.1"

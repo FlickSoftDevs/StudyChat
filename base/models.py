@@ -30,8 +30,9 @@ class User(AbstractUser):
     email = models.EmailField(unique=True, null=True, help_text="Enter your email", verbose_name="Email")
     bio = models.TextField(null=True, help_text="A brief description about yourself", verbose_name="Biography")
     #avatar = models.ImageField(null=True, default="avatar.svg", help_text="Upload an avatar", verbose_name="Avatar")
-    avatar = CloudinaryField('avatar', null=True, default="avatar.svg", help_text="Upload an avatar")
-
+    avatar = CloudinaryField('avatar')
+    # , null=True, default="avatar.svg", help_text="Upload an avatar"
+    
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
