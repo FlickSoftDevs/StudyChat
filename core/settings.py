@@ -19,14 +19,14 @@ SECRET_KEY = '!5rt_gri@0-_0+#*nyb6+@e%%cmnosjal9)6$4krj^5cs7=hd='
 
 
 
-DEBUG = True
+DEBUG = False
 
 #AUTH_USER_MODEL = CONFIG['Django']['AUTH_USER_MODEL']
 AUTH_USER_MODEL = 'base.User'
 
 
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0']
+ALLOWED_HOSTS = ['*']
 
 # LANGUAGE_CODE = CONFIG['Django']['LANGUAGE_CODE']
 LANGUAGE_CODE = 'en-us'
