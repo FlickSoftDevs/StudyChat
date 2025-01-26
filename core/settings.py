@@ -10,94 +10,46 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 CONFIG = configparser.ConfigParser()
 CONFIG.read('config.ini')
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-
-# SECRET_KEY = CONFIG['Django']['SECRET_KEY']
-# SECRET_KEY = None
+# Secret key
 SECRET_KEY = '!5rt_gri@0-_0+#*nyb6+@e%%cmnosjal9)6$4krj^5cs7=hd='
 
-
-
+# Debug mode
 DEBUG = False
 
-#AUTH_USER_MODEL = CONFIG['Django']['AUTH_USER_MODEL']
-AUTH_USER_MODEL = 'base.User'
-
-
-
+# Allowed hosts
 ALLOWED_HOSTS = ['*']
 
-# LANGUAGE_CODE = CONFIG['Django']['LANGUAGE_CODE']
+# Custom user model
+AUTH_USER_MODEL = 'base.User'
+
+# Language and time zone
 LANGUAGE_CODE = 'en-us'
-
-
-
-
-#language changer
+TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
-#language support
+
 LANGUAGES = [
-    ('en','English'),
-    ('sw','Swahili'),
+    ('en', 'English'),
+    ('sw', 'Swahili'),
 ]
 
-
-
-# TIME_ZONE = CONFIG['Django']['TIME_ZONE']
-TIME_ZONE = 'UTC'
-
-
-USE_I18N = True
-
-USE_TZ = True
-
+# Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-
-
-#MEDIA_URL = '/images/'
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Directory for collected static files
 STATICFILES_DIRS = [
-    BASE_DIR / 'static'
+    os.path.join(BASE_DIR, 'static'),  # Directory for development static files
 ]
 
-#MEDIA_ROOT = BASE_DIR / 'static/images'
+# Use Whitenoise to serve static files in production
+if not DEBUG:
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# Media files (Cloudinary)
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+MEDIA_URL = 'https://res.cloudinary.com/drc3xiipg/'
 
-ROOT_URLCONF = 'core.urls'
-
-WSGI_APPLICATION = 'core.wsgi.application'
-
-CORS_ALLOW_ALL_ORIGINS = True
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-
-
-
-
-# supabase database online_chat
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',  # Jina la database
-        'USER': 'postgres.zzdoioliwmgvgfyoulsq',  # Jina la mtumiaji
-        'PASSWORD': 'NyumbaChap',  # Badilisha kwa password yako halisi
-        'HOST': 'aws-0-eu-central-1.pooler.supabase.com',  # URL ya server ya database
-        'PORT': '5432',  # Port ya PostgreSQL (default ni 5432)
-    }
-}
-
+# Installed apps
 INSTALLED_APPS = [
     'jazzmin',
     'django.contrib.admin',
@@ -110,16 +62,15 @@ INSTALLED_APPS = [
     'base.apps.BaseConfig',
     'cloudinary_storage',
     'cloudinary',
-
-
     'rest_framework',
-    "corsheaders",
+    'corsheaders',
 ]
 
+# Middleware
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    "corsheaders.middleware.CorsMiddleware",
-
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Middleware for serving static files
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -128,7 +79,19 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# Database (PostgreSQL with Supabase)
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres.zzdoioliwmgvgfyoulsq',
+        'PASSWORD': 'NyumbaChap',
+        'HOST': 'aws-0-eu-central-1.pooler.supabase.com',
+        'PORT': '5432',
+    }
+}
 
+# Templates
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -145,40 +108,35 @@ TEMPLATES = [
     },
 ]
 
-
+# Password validation
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
-
 # Cloudinary settings
-
 cloudinary.config(
-    cloud_name='drc3xiipg',  # Your Cloudinary cloud name
-    api_key='321181265585861',   # Replace with your Cloudinary API key
-    api_secret='KA2L_qJUCyBBZFcyeQDGzH1kfUo',  # Replace with your Cloudinary API secret
+    cloud_name='drc3xiipg',
+    api_key='321181265585861',
+    api_secret='KA2L_qJUCyBBZFcyeQDGzH1kfUo',
 )
 
-
-
-
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'drc3xiipg',  # Jina lako la Cloudinary
-    'API_KEY': '321181265585861',  # API key yako
-    'API_SECRET': 'KA2L_qJUCyBBZFcyeQDGzH1kfUo'  # API secret yako
+    'CLOUD_NAME': 'drc3xiipg',
+    'API_KEY': '321181265585861',
+    'API_SECRET': 'KA2L_qJUCyBBZFcyeQDGzH1kfUo',
 }
 
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-MEDIA_URL = 'https://res.cloudinary.com/drc3xiipg/'
+# Default primary key field type
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Root URL configuration
+ROOT_URLCONF = 'core.urls'
+
+# WSGI application
+WSGI_APPLICATION = 'core.wsgi.application'
+
+# CORS settings
+CORS_ALLOW_ALL_ORIGINS = True

@@ -2,8 +2,7 @@
 <header class="header header--loggedIn">
     <div class="container">
         <a href="{% url 'home' %}" class="header__logo">
-            <img src="{% static 'images/logo.webp' %}" />
-            
+            <img src="{% static 'images/logo.svg' %}" />
             <h1>Discussion Forum</h1>
         </a>
         <form class="header__search" method="GET" action="{% url 'home' %}">
@@ -16,7 +15,6 @@
                 </svg>
                 <input name="q" placeholder="Search for posts" />
             </label>
-    
         </form>
         <nav class="header__menu">
 
