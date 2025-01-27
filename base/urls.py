@@ -1,7 +1,22 @@
 from django.urls import path
 from . import views
 
+from django.contrib.sitemaps.views import sitemap
+from .sitemaps import RoomSitemap, TopicSitemap, UserSitemap
+
+
+
+sitemaps = {
+    'rooms': RoomSitemap,
+    'topics': TopicSitemap,
+    'users': UserSitemap,
+}
+
 urlpatterns = [
+
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+
+
     path('login/', views.loginPage, name="login"),
     path('logout/', views.logoutUser, name="logout"),
     path('register/', views.registerPage, name="register"),

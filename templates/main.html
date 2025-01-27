@@ -4,11 +4,47 @@
 
 <head>
     <meta charset="UTF-8" />
+
+        <meta name="description" content="{{ room.name }} - Discussion on {{ room.topic.name }}">
+        <meta name="keywords" content="discussion, room, {{ room.topic.name }}">
+        <meta name="description" content="Explore discussions related to {{ topic.name }}. Join the conversation and share your thoughts!">
+        <meta name="description" content="{{ room.name }} - Discussion on {{ room.topic.name }}">
+        <meta name="keywords" content="discussion, room, {{ room.topic.name }}">
+    
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="{% static 'styles/style.css' %}" />
     <title>Discussion Forum - Find study partners around the world!</title>
+
+
+
+
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "DiscussionForumPosting",
+            "name": "{{ room.name }}",
+            "description": "{{ room.description|escapejs }}",
+            "url": "https://chimbolab.onrender.com/room/{{ room.id }}/",
+            "creator": {
+                "@type": "Person",
+                "name": "{{ room.host.name }}",
+                "url": "https://chimbolab.onrender.com/profile/{{ room.host.id }}"
+            },
+            "datePublished": "{{ room.created|date:'c' }}",
+            "dateModified": "{{ room.updated|date:'c' }}",
+            "interactEvent": {
+                "@type": "CommunicateAction",
+                "participant": {
+                    "@type": "Person",
+                    "name": "User"
+                },
+                "actionStatus": "https://schema.org/ActiveActionStatus"
+            }
+        }
+    </script>
 </head>
 
 <body>
