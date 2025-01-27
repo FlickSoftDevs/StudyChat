@@ -1,6 +1,15 @@
 from django.contrib.sitemaps import Sitemap
 from .models import Room, Topic  # Import your models here
 
+from .models import User  # Import your User model here
+
+class UserSitemap(Sitemap):
+    def items(self):
+        return User.objects.all()  # Return the list of users
+
+    def lastmod(self, obj):
+        return obj.last_modified  # Assuming the User model has a 'last_modified' field
+
 class RoomSitemap(Sitemap):
     def items(self):
         return Room.objects.all()  # Returns all rooms in your database
