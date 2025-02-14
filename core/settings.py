@@ -14,7 +14,7 @@ CONFIG.read('config.ini')
 SECRET_KEY = '!5rt_gri@0-_0+#*nyb6+@e%%cmnosjal9)6$4krj^5cs7=hd='
 
 # Debug mode
-DEBUG = False
+DEBUG = True
 
 # Allowed hosts
 ALLOWED_HOSTS = ['*']
