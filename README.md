@@ -21,7 +21,7 @@ Watumiaji wanaweza kujiunga, kuunda vyumba vya mjadala, kushiriki mijadala ya mo
 
 ## 🌍 Maono & Mikakati
 
-> **Muundaji: [William](https://nyumbachap.com)**  
+> **Muundaji: [William]([https://nyumbachap.com](https://barackwilliam.github.io/me/))**  
 > 📞 **Mawasiliano**: 0629712678
 
 **Maono:**  
