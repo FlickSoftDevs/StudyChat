@@ -79,17 +79,16 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# Database (PostgreSQL with Supabase)
+# Database (SQLite3 with Supabase)
+# settings.py
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres.zzdoioliwmgvgfyoulsq',
-        'PASSWORD': 'NyumbaChap',
-        'HOST': 'aws-0-eu-central-1.pooler.supabase.com',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',  # Kwa SQLite
+        'NAME': BASE_DIR / 'db.sqlite3',  # Hapa tunatumia `BASE_DIR` kuweka database kwenye folder ya mradi
     }
 }
+
 
 # Templates
 TEMPLATES = [
