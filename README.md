@@ -66,9 +66,9 @@ Maono ya Discussion Forum ni kuleta pamoja developers, wanafunzi, na Watanzania 
 ### Project Zingine
 - **Platform ya Kutafuta nyumba za kupanga, hostel, nyumba za wageni nk => [NyumbaChap](https://nyumbachap.com)**  
 - **Duka Mtandaoni => [Sairis Group](https://sairisgroup.com)**   
-- **SuperMarket => [24Security](http://app.24security.co.tz)**
-- **E-commerce website => [DoxaConnect](http://doxaconnect.co.tz)**
-- **Social Group website => [Ebenezeri-Mind-Education](http://ebenezerimindeducation.com)**
+- **SuperMarket => [24Security](https://app.24security.co.tz)**
+- **E-commerce website => [DoxaConnect](https://doxaconnect.co.tz)**
+- **Social Group website => [Ebenezeri-Mind-Education](https://ebenezerimindeducation.com)**
 - **Duka Mtandaoni => [Apex4](https://apex4.site)**  
 
 
