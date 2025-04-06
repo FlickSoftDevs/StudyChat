@@ -62,7 +62,7 @@ Kujenga jukwaa la kidigitali linalowezesha watu kuwasiliana kwa uhuru, kuelimish
 ### Installation Guide
 
 ```bash
-git clone https://github.com/marse11e/Discussion-Forum-Django.git
+git clone https://github.com/Barackwilliam/StudyChat.git
 cd Discussion-Forum-Django
 pip install virtualenv
 virtualenv env
