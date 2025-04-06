@@ -116,18 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
-# Cloudinary settings
-cloudinary.config(
-    cloud_name='drc3xiipg',
-    api_key='321181265585861',
-    api_secret='KA2L_qJUCyBBZFcyeQDGzH1kfUo',
-)
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'drc3xiipg',
-    'API_KEY': '321181265585861',
-    'API_SECRET': 'KA2L_qJUCyBBZFcyeQDGzH1kfUo',
-}
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
