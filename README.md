@@ -61,9 +61,18 @@ Maono ya Discussion Forum ni kuleta pamoja developers, wanafunzi, na Watanzania 
 
 - Python 3.x  
 - pip  
-- Git  
+- Git
 
-### Mwongozo wa Usanidi
+### Project Zingine
+- **Platform ya Kutafuta nyumba za kupanga, hostel, nyumba za wageni nk => [NyumbaChap](https://nyumbachap.com)**  
+- **Duka Mtandaoni => [Sairis Group](https://sairisgroup.com)**   
+- **SuperMarket => [24Security](http://app.24security.co.tz)**
+- **E-commerce website => [DoxaConnect](http://doxaconnect.co.tz)**
+- **Social Group website => [Ebenezeri-Mind-Education](http://ebenezerimindeducation.com)**
+- **Duka Mtandaoni => [Apex4](https://apex4.site)**  
+
+
+### Mwongozo wa Ku-install StudyChat
 
 ```bash
 git clone https://github.com/Barackwilliam/StudyChat.git
@@ -74,3 +83,5 @@ virtualenv env
 source env/bin/activate  # Kwa Windows: env\Scripts\activate
 pip install -r requirements.txt
 python manage.py runserver
+
+
